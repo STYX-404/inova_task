@@ -9,8 +9,14 @@ Rails.application.routes.draw do
     resources :users, only: %i() do
       resources :reviews, only: %i(create)
       resources :posts, only: %i(index create)
-    end
 
-    resources :posts, only: %i(index)
+      collection do
+        resources :posts, only: %i() do
+          collection do
+            get :top
+          end
+        end
+      end
+    end
   end
 end
