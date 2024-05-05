@@ -3,12 +3,11 @@ class V1::BaseController < ApplicationController
 
   private
     def current_user
-      User.find(params[:user_id])
+      User.find(params[:user_id]) if params[:user_id].present?
     end
 
     def paginate(collection:, options: {})
-      byebug
-      per_page = params[:per_page]
+      per_page = params[:per_page] || 10
       page = params[:page] || 1
       collection = collection.page(page).per(per_page)
       render({

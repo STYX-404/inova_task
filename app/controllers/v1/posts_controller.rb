@@ -3,8 +3,13 @@
 class V1::PostsController < V1::BaseController
 
   def index
-    @posts = current_user.posts
-    paginate(collection: @posts)
+    posts = current_user.posts.includes(:reviews)
+    paginate(collection: posts)
+  end
+
+  def top
+    top_posts = Post.top_posts
+    paginate(collection: top_posts)
   end
 
   def create
