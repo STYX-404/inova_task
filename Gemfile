@@ -48,3 +48,15 @@ end
 
 
 gem "kaminari", "~> 1.2"
+
+gem "active_model_serializers", "~> 0.10.14"
+
+gem "faker", "~> 3.3"
+
+gem "rspec", "~> 3.13"
+
+gem "rswag", "~> 2.13"
+
+gem "factory_bot_rails", "~> 6.4"
+
+gem "simplecov", "~> 0.22.0"
