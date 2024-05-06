@@ -1,24 +1,46 @@
-# README
+# Inova Task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to the Inova Task API! This API is dockerized for easy setup and testing. Follow the steps below to get started.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+- Docker must be installed on your machine.
 
-* Configuration
+### Setup
 
-* Database creation
+1. Clone this repository to your local machine:
 
-* Database initialization
+   ```bash
+   git clone <repository_url>
+  ```
+2. Navigate to the project directory:
 
-* How to run the test suite
+  ```bash
+    cd project-name
+  ```
+3. Start the Docker containers:
 
-* Services (job queues, cache servers, search engines, etc.)
+  ```bash
+    docker compose up --build
+  ```
 
-* Deployment instructions
+This command will start the following:
+- The app container, which hosts the Puma server for the API.
+- The database container, running the necessary database for the API.
+- It will install all Docker images, dependencies, and gems required by the project.
 
-* ...
+4. Once the containers are up and running, Docker will automatically run the following:
+- `rake db:prepare`: This will create all databases (`development` and `test`), load all schemas, and initialize with seed data if the database does not exist. If the database already exists, it will run any pending migrations.
+The Puma server will be accessible on port `3000` by default.
+
+## Usage
+- After the setup is complete, you can access the API playground at http://localhost:3000.
+
+## API Documentation
+- All API endpoints are documented using Swagger API Documentation. You can access the Swagger UI to explore and test the endpoints interactively by visiting [Swagger API Documentation](http://localhost:3000/api-docs/swagger.json).
+
+## ERD
+
+![erd_alt](./erd.jpg)
