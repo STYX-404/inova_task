@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :post do
-    body { Faker::Lorem.sentence}
+    body { Faker::Lorem.paragraph}
+    title { Faker::Lorem.sentence}
     association :user
 
     trait :with_reviews do

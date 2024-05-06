@@ -4,6 +4,5 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-  validates_presence_of :username
-  validates_uniqueness_of :username
+  validates :username, presence: true, uniqueness: true
 end
