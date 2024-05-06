@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_121543) do
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
+    t.string "title", null: false
     t.text "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -23,7 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_121543) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "body"
+    t.text "comment", null: false
+    t.integer "rate"
     t.bigint "user_id"
     t.bigint "post_id"
     t.datetime "created_at", null: false
@@ -33,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_121543) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "username", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["username"], name: "index_users_on_username", unique: true
