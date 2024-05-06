@@ -1,0 +1,161 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Inova task Docs",
+    "version": "v1"
+  },
+  "paths": {
+    "/v1/top_posts": {
+      "get": {
+        "summary": "Lists top posts ordered by average rating",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "top posts retrived"
+          }
+        }
+      }
+    },
+    "/v1/users/{user_id}/posts": {
+      "post": {
+        "summary": "Creates A Post",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "post created"
+          },
+          "422": {
+            "description": "invalid attributes"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "post[title]": {
+                    "type": "string"
+                  },
+                  "post[body]": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "post[title]"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "List all user's posts",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "posts retrived"
+          }
+        }
+      }
+    },
+    "/v1/users/{user_id}/reviews": {
+      "post": {
+        "summary": "Adds review to a post",
+        "tags": [
+          "Reviews"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "review created"
+          },
+          "422": {
+            "description": "invalid attributes"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "review[comment]": {
+                    "type": "string"
+                  },
+                  "review[rate]": {
+                    "type": "number",
+                    "description": "Number between 1 and 5"
+                  },
+                  "review[post_id]": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "review[comment]",
+                  "review[post_id]"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
