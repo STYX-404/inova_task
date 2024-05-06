@@ -1,5 +1,5 @@
 #!/bin/sh
-rake db:prepare --trace
+rake db:prepare
 
 FILE=/app/tmp/pids/server.pid
 
