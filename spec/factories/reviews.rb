@@ -5,9 +5,6 @@ FactoryBot.define do
     comment { Faker::Lorem.sentence }
     rate { rand(0..5) }
     association :user
-  end
-
-  trait :with_post_associated do
     association :post
   end
 end

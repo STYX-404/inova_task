@@ -11,8 +11,8 @@ describe "Posts API", type: :request, integration: true do
       parameter name: :page, in: :query, type: :number
 
       response "200", "top posts retrived" do
-        let(:post) { create(:post)  }
-        let(:id) { post.id }
+        let(:per_page) { 10  }
+        let(:page) { 1  }
         run_test!
       end
     end
